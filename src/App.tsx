@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ArrowRight, BadgeDollarSign, Check, Crown, Gem, Layers as Layers3, Mic as Mic2, PackageCheck, RadioTower, Rocket, ShieldCheck, ShoppingBag, Sparkles, Workflow } from "lucide-react";
+import { ArrowRight, BadgeDollarSign, Check, Crown, Gem, Instagram, Layers as Layers3, Mic as Mic2, RadioTower, Rocket, ShieldCheck, ShoppingBag, Sparkles, Tv, Workflow } from "lucide-react";
 
 type PackageTier = {
   name: string;
@@ -20,6 +20,17 @@ const packages: PackageTier[] = [
       "1 Logo variation",
       "1 Social media graphic template",
       "1 Round of revision",
+    ],
+  },
+  {
+    name: "Community Marketing",
+    price: "$149.99 US",
+    badge: "Promo",
+    features: [
+      "Social media growth strategy",
+      "Ads Campaign (Meta/TikTok)",
+      "Real and measurable promotion",
+      "Direct community support",
     ],
   },
   {
@@ -65,11 +76,8 @@ const packages: PackageTier[] = [
   },
 ];
 
-const sizes = ["S", "M", "L", "XL"];
-
 function App() {
   const [selectedPackage, setSelectedPackage] = useState(2);
-  const [selectedSize, setSelectedSize] = useState("L");
 
   const chosenTier = packages[selectedPackage];
   const checkoutLabel = useMemo(
@@ -88,7 +96,7 @@ function App() {
         setSelectedPackage={setSelectedPackage}
         checkoutLabel={checkoutLabel}
       />
-      <Merch selectedSize={selectedSize} setSelectedSize={setSelectedSize} />
+      <Merch />
       <Conversion />
       <Footer />
     </main>
@@ -196,6 +204,12 @@ function BusinessSections() {
       body: "The multimedia arm for digital identity, branding, urban music visual content, and audio/vocal production layouts built to move cleanly across social, web, and commerce.",
       points: ["Brand identity direction", "Urban music visuals", "Audio and vocal production layouts"],
     },
+    {
+      icon: RadioTower,
+      title: "Digital Marketing & Promotions",
+      body: "Real digital marketing campaigns and promotions focused on conversion and organic growth for artists and brands.",
+      points: ["Meta & TikTok Ads", "Organic Growth", "Conversion Strategy"],
+    },
   ];
 
   return (
@@ -203,7 +217,7 @@ function BusinessSections() {
       <div className="mb-8 flex items-end justify-between gap-6">
         <div>
           <p className="text-sm font-bold uppercase tracking-[0.24em] text-gold">Core Business</p>
-          <h2 className="mt-3 text-3xl font-black sm:text-5xl">Two engines. One premium launch system.</h2>
+          <h2 className="mt-3 text-3xl font-black sm:text-5xl">Three engines. One premium launch system.</h2>
         </div>
       </div>
       <div className="grid gap-5 lg:grid-cols-2">
@@ -214,7 +228,7 @@ function BusinessSections() {
             <p className="mt-4 leading-7 text-white/64">{section.body}</p>
             <div className="mt-7 grid gap-3 sm:grid-cols-3">
               {section.points.map((point) => (
-                <span key={point} className="rounded-2xl border border-white/10 bg-night/55 px-4 py-3 text-sm font-semibold text-white/72">
+                <span key={point} className="rounded-2xl border border-white/10 bg-night/55 px-4 py-3 text-sm font-semibold italic text-white/72">
                   {point}
                 </span>
               ))}
@@ -289,72 +303,24 @@ function Pricing({
   );
 }
 
-function Merch({
-  selectedSize,
-  setSelectedSize,
-}: {
-  selectedSize: string;
-  setSelectedSize: (size: string) => void;
-}) {
+function Merch() {
   return (
-    <section id="merch" className="mx-auto grid w-full max-w-7xl gap-7 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-      <div className="rounded-[2rem] border border-gold/25 bg-white/[0.045] p-5 shadow-glow backdrop-blur">
-        <div className="relative grid aspect-square place-items-center overflow-hidden rounded-[1.5rem] bg-[linear-gradient(145deg,#050608,#13151D)]">
-          <div className="absolute h-[72%] w-[58%] rounded-t-[42%] rounded-b-[18%] border border-white/10 bg-black shadow-2xl" />
-          <div className="absolute top-[16%] h-[26%] w-[32%] rounded-t-full border-x border-t border-white/10 bg-[#050505]" />
-          <div className="absolute top-[40%] text-center">
-            <Crown className="mx-auto h-12 w-12 text-gold" />
-            <p className="mt-3 text-2xl font-black tracking-[0.16em] text-gold">KNG_CARLY</p>
-            <RadioTower className="mx-auto mt-3 h-9 w-9 text-platinum/85" />
-          </div>
-        </div>
-      </div>
-      <div>
+    <section id="merch" className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8">
+      <div className="relative overflow-hidden rounded-[2rem] border border-gold/25 bg-white/[0.045] p-8 shadow-glow backdrop-blur sm:p-12">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_85%_15%,rgba(212,175,55,0.12),transparent_55%)]" />
         <p className="text-sm font-bold uppercase tracking-[0.24em] text-gold">E-Commerce Hub</p>
-        <h2 className="mt-3 text-3xl font-black sm:text-5xl">Merchandise marketplace ready for streetwear drops.</h2>
-        <div className="mt-7 rounded-3xl border border-white/10 bg-white/[0.045] p-6 backdrop-blur">
-          <div className="flex flex-col justify-between gap-4 sm:flex-row">
-            <div>
-              <h3 className="text-2xl font-black">KNG_CARLY Signature "Gold & Platinum" Unisex Hoodie</h3>
-              <p className="mt-3 leading-7 text-white/62">
-                Black premium hoodie featuring the metallic gold "KNG_CARLY" crown and music emblem centered on the chest.
-              </p>
-            </div>
-            <p className="text-3xl font-black text-gold">$50.00 US</p>
-          </div>
-          <div className="mt-7">
-            <p className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-white/55">Size</p>
-            <div className="flex flex-wrap gap-3">
-              {sizes.map((size) => (
-                <button
-                  key={size}
-                  type="button"
-                  onClick={() => setSelectedSize(size)}
-                  className={`grid h-12 w-14 place-items-center rounded-xl border font-black transition ${
-                    selectedSize === size
-                      ? "border-gold bg-gold text-night"
-                      : "border-white/14 text-white hover:border-gold"
-                  }`}
-                  aria-pressed={selectedSize === size}
-                >
-                  {size}
-                </button>
-              ))}
-            </div>
-          </div>
-          <div className="mt-7 grid gap-3 sm:grid-cols-3">
-            {["WooCommerce-ready", "Printful API mapping", "Direct checkout routing"].map((item) => (
-              <span key={item} className="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-night/55 px-4 py-3 text-sm text-white/68">
-                <PackageCheck className="h-4 w-4 text-gold" />
-                {item}
-              </span>
-            ))}
-          </div>
-          <button className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full border border-gold px-6 py-4 font-black text-gold transition hover:bg-gold hover:text-night sm:w-auto">
-            Checkout Hoodie - Size {selectedSize}
-            <ShoppingBag className="h-5 w-5" />
-          </button>
-        </div>
+        <h2 className="mt-3 text-3xl font-black sm:text-5xl">DHSKNG Studios Official Hub</h2>
+        <p className="mt-5 max-w-2xl text-lg leading-8 text-white/62">
+          All our merchandise, exclusive drops, and production hardware are hosted on our official store.
+        </p>
+        <a
+          href="https://dhsknastudio.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-gold px-7 py-4 font-black text-night transition hover:bg-platinum"
+        >
+          Visit Official Store <ShoppingBag className="h-5 w-5" />
+        </a>
       </div>
     </section>
   );
@@ -398,7 +364,29 @@ function Footer() {
           </p>
         </div>
         <FooterColumn title="Navigate" links={["Services", "Pricing", "Merch", "Contact"]} />
-        <FooterColumn title="Social" links={["@kingdomconnectvip", "@dhskngstudios", "@kng_carly"]} />
+        <div>
+          <p className="font-black text-white">Social</p>
+          <div className="mt-4 flex gap-3">
+            <a
+              href="https://instagram.com/kingdomconnectvip"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/[0.04] text-white/70 transition hover:border-gold hover:text-gold"
+            >
+              <Instagram className="h-5 w-5" />
+            </a>
+            <a
+              href="https://tiktok.com/@dhskngstudiois"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok"
+              className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/[0.04] text-white/70 transition hover:border-gold hover:text-gold"
+            >
+              <Tv className="h-5 w-5" />
+            </a>
+          </div>
+        </div>
         <div>
           <p className="font-black text-white">Compliance</p>
           <div className="mt-4 space-y-3 text-sm text-white/55">
@@ -411,6 +399,9 @@ function Footer() {
             <Workflow className="h-5 w-5" />
           </div>
         </div>
+      </div>
+      <div className="mx-auto mt-8 max-w-7xl border-t border-white/10 pt-6 text-center text-sm text-white/45">
+        &copy; {new Date().getFullYear()} KingdomConnect VIP. All rights reserved.
       </div>
     </footer>
   );

@@ -20,14 +20,15 @@ declare module "lucide-react" {
   export const Check: (props: IconProps) => any;
   export const Crown: (props: IconProps) => any;
   export const Gem: (props: IconProps) => any;
+  export const Instagram: (props: IconProps) => any;
   export const Layers3: (props: IconProps) => any;
   export const Mic2: (props: IconProps) => any;
-  export const PackageCheck: (props: IconProps) => any;
   export const RadioTower: (props: IconProps) => any;
   export const Rocket: (props: IconProps) => any;
   export const ShieldCheck: (props: IconProps) => any;
   export const ShoppingBag: (props: IconProps) => any;
   export const Sparkles: (props: IconProps) => any;
+  export const Tv: (props: IconProps) => any;
   export const Workflow: (props: IconProps) => any;
 }
 
