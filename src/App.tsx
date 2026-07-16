@@ -1,20 +1,5 @@
 import { useMemo, useState } from "react";
-import {
-  ArrowRight,
-  BadgeDollarSign,
-  Check,
-  Crown,
-  Gem,
-  Layers3,
-  Mic2,
-  PackageCheck,
-  RadioTower,
-  Rocket,
-  ShieldCheck,
-  ShoppingBag,
-  Sparkles,
-  Workflow,
-} from "lucide-react";
+import { ArrowRight, BadgeDollarSign, Check, Crown, Gem, Layers as Layers3, Mic as Mic2, PackageCheck, RadioTower, Rocket, ShieldCheck, ShoppingBag, Sparkles, Workflow } from "lucide-react";
 
 type PackageTier = {
   name: string;
@@ -112,7 +97,7 @@ function App() {
 
 function Header() {
   return (
-    <header className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-5 sm:px-8">
+    <header className="max-w-7xl mx-auto w-full flex justify-between items-center px-6">
       <a href="#top" className="flex items-center gap-3" aria-label="KingdomConnect VIP home">
         <span className="grid h-11 w-11 place-items-center rounded-full border border-gold/50 bg-white/[0.04] shadow-glow">
           <Crown className="h-5 w-5 text-gold" />
@@ -148,24 +133,24 @@ function Hero() {
           <Sparkles className="h-4 w-4 text-gold" />
           Premium tech, design, music visuals, and merch systems
         </div>
-        <h1 className="max-w-4xl text-5xl font-black leading-[0.98] text-white sm:text-6xl lg:text-7xl">
+        <h1 className="max-w-4xl text-5xl font-black leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl">
           KingdomConnect VIP builds digital presence that looks expensive and works fast.
         </h1>
-        <p className="mt-7 max-w-2xl text-lg leading-8 text-white/68">
+        <p className="mt-7 max-w-2xl text-lg leading-8 text-gray-300">
           High-end frontend builds, brand identity, creative production, workflow automation, and custom merchandise experiences for artists, creators, founders, and premium streetwear launches.
         </p>
         <div className="mt-9 flex flex-col gap-3 sm:flex-row">
           <a href="#contact" className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 font-bold text-night transition hover:bg-platinum">
             Start a VIP Project <ArrowRight className="h-4 w-4" />
           </a>
-          <a href="#merch" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-3 font-bold text-white transition hover:border-gold hover:text-gold">
+          <a href="#merch" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-3 font-bold text-white hover:text-yellow-500 hover:border-yellow-500 transition-colors duration-300">
             Explore Merch Drop
           </a>
         </div>
       </div>
       <div className="relative">
         <div className="absolute inset-6 rounded-[2rem] border border-gold/30 blur-xl" />
-        <div className="relative rounded-[2rem] border border-white/12 bg-white/[0.055] p-5 shadow-2xl backdrop-blur">
+        <div className="relative rounded-[2rem] border border-white/12 bg-white/[0.055] p-5 shadow-[0_0_60px_-15px_rgba(234,179,8,0.15)] backdrop-blur">
           <div className="rounded-[1.5rem] border border-gold/25 bg-gradient-to-br from-white/[0.1] to-white/[0.025] p-6">
             <div className="flex items-center justify-between border-b border-white/10 pb-5">
               <div>
@@ -180,7 +165,7 @@ function Hero() {
                 ["Brand Systems", "Logo, visuals, content layouts, social identity"],
                 ["Merch Pipeline", "Printful-ready products with clean checkout routing"],
               ].map(([title, detail]) => (
-                <div key={title} className="rounded-2xl border border-white/10 bg-night/60 p-4">
+                <div key={title} className="rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-4">
                   <p className="font-semibold text-white">{title}</p>
                   <p className="mt-1 text-sm leading-6 text-white/55">{detail}</p>
                 </div>
