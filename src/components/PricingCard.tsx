@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { Check, Loader as Loader2, ArrowRight, Star } from 'lucide-react';
 import { StripeProduct } from '../stripe-config';
-import { useAuth } from '../hooks/useAuth';
-import { useNavigate } from 'react-router-dom';
 
 interface PricingCardProps {
   product: StripeProduct;
@@ -11,21 +9,14 @@ interface PricingCardProps {
 export default function PricingCard({ product }: PricingCardProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const { user } = useAuth();
-  const navigate = useNavigate();
 
   const handleCheckout = async () => {
-    if (!user) {
-      navigate('/auth');
-      return;
-    }
-
     setLoading(true);
     setError(null);
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/create-checkout`,
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/stripe-checkout`,
         {
           method: 'POST',
           headers: {
@@ -33,10 +24,10 @@ export default function PricingCard({ product }: PricingCardProps) {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            priceId: product.priceId,
+            price_id: product.priceId,
             mode: product.mode,
-            successUrl: `${window.location.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
-            cancelUrl: `${window.location.origin}/`,
+            success_url: `${window.location.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${window.location.origin}/`,
           }),
         }
       );
